@@ -1,0 +1,36 @@
+Animation assignment:
+Create a box and specify the color to be changed for every second.
+
+<html>
+<head>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            background-color: #BDB76B;
+            animation-name: test;
+            animation-duration:1s;
+            animation-iteration-count: infinite;
+            animation-delay: 2s;
+        }
+
+
+
+        /* Standard syntax */
+        @keyframes test {
+            0%   {background-color: #BDB76B;}
+            25%  {background-color: #8B008B;}
+            50%  {background-color: #556B2F;}
+            100% {background-color: #FF8C00;}
+        }
+    </style>
+</head>
+<body>
+
+<p><b>Note:</b> Animation assignment:
+Create a box and specify the color to be changed for every second. </p>
+
+<div></div>
+
+</body>
+</html>
