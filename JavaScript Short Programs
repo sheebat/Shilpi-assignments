@@ -1,0 +1,173 @@
+Q1: Extract unique characters from a string 
+
+Ex: "thequickbrownfoxjumpsoverthelazydog" output: thequickbrownfxjmpsvlazydg 
+
+function unique_char(str1)  
+
+{  
+
+var str=str1;  
+
+var uniql="";  
+
+ for (var x=0;x < str.length;x++)  
+
+{  
+
+if(uniql.indexOf(str.charAt(x))==-1)  
+
+  {  
+
+  uniql += str[x];    
+
+   }  
+
+  }  
+
+  return uniql;    
+
+}    
+
+console.log(unique_char("thequickbrownfoxjumpsoverthelazydog"));  
+
+________________________
+
+thequickbrownfxjmpsvlazydg
+
+__________________________
+
+Q1: Create a clock and display time in each second 14:37:42 14:37:43 14:37:44 
+
+function Display() {
+
+var current = new Date();
+
+console.log(current.getHours()+":"+current.getMinutes()+":"+current.getSeconds());
+
+}
+
+setInterval(Display, 1000);
+
+
+
+
+
+
+
+Q1: Write a javascript function to reverse a string 
+
+in-built function
+
+function reverseString(str) {
+var newString = "";
+for (var i = str.length - 1; i >= 0; i--) { 
+newString += str[i]; 
+}
+return newString; // "olleh"
+
+}
+reverseString('hello');
+----------------------------------------------------
+function reverseString(str) {
+var splitString = str.split(""); 
+// var splitString = "hello".split("");
+    var reverseArray = splitString.reverse(); 
+// var reverseArray = ["h", "e", "l", "l", "o"].reverse();
+    var joinArray = reverseArray.join(""); 
+// var joinArray = ["o", "l", "l", "e", "h"].join("");
+    return joinArray; // "olleh"
+}
+
+
+reverseString("hello");
+function reverseString(str) {
+    var temp = '';
+    var i = str.length;
+
+    while (i > 0) {
+        temp += str.substring(i - 1, i);
+        i--;
+    }
+    return temp;
+}
+reverseString('dwayne');
+
+
+
+
+
+
+
+ 
+
+without in-built function 
+
+Q1: Program to generate all combinations of a string 
+
+Ex: "dog" output: d,do,dog,o,og,g 
+
+(function(str) {
+var tempArr = []
+for (var i = 0; i < str.length; i++) {
+for (var j = i+1; j < str.length + 1; j++) {
+tempArr.push(str.slice(i, j))
+}
+}
+
+console.log(tempArr.join())
+})('dog')
+Q1: Program that returns string with letters arranged in alphabetical order 
+
+in-built function 
+
+function alphabet_order(str)
+
+{
+
+return str.split(' ').sort().join(' ');
+
+}
+
+console.log(alphabet_order("webmaster"));
+
+
+
+without using in-built function 
+
+Ex: "webmaster" output: "abeemrstw" 
+
+Q1: check given word is palindrome or not in-built function without in-built function 
+
+function palindrome(str) {
+  return true;
+}
+palindrome("eye");
+
+---------------------------------
+
+
+
+function palindrome(str) {
+ var re = /[^A-Za-z0-9]/g;
+ str = str.toLowerCase().replace(re, '');
+ var len = str.length;
+ for (var i = 0; i < len/2; i++) {
+   if (str[i] !== str[len - 1 - i]) {
+       return false;
+   }
+ }
+ return true;
+}
+palindrome("A man, a plan, a canal. Panama");
+
+______________________________________________________________________
+var pal="madam";
+var x=true;
+var pals="";
+for (i=0;i<=(pal.length/2);i++){
+if(pal[i]!=pal[pal.length-(i+1)]) {
+x=false;
+}
+}
+console.log((x));
+____________________________________________
