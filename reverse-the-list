@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body ng-app="myApp">
+<div ng-controller= "myCtrl">
+    <table>
+        <input type="text" ng-model="list_item">
+        <button ng-click="add()">add</button>
+        <ul ng-repeat="i in list">
+            <li>{{i}}</li>
+        </ul><br />
+        <button ng-click="rev()">reverse</button>
+
+    </table>
+
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function($scope) {
+
+
+            $scope.list= [];
+            $scope.add= function() {;
+                $scope.list.push ($scope.list_item);
+                $scope.list_item="";
+            }
+            $scope.rev=function(){
+                $scope.list_r=$scope.list.reverse();}
+
+
+
+        });
+    </script>
+</div>
+</body>
+</html>
