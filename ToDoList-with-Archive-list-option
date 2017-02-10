@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul{
+            list-style: none;
+        }
+        .hilite{
+            text-decoration: line-through;
+        }
+    </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<p>{{count}} of {{tasks.length}}remaining</p>
+<a href="#" ng-click="showArchive()">Archive</a>
+<a href="#" ng-click="showList()">List</a>
+<br>
+<br>
+
+<div ng-switch="curview">
+    <div ng-switch-when="archive">
+        <ul>
+            <li ng-repeat="task in tasks | myfilter">
+
+                {{task.activity}}
+               </li>
+
+        </ul></div>
+
+        <div ng-switch-when="list">
+<ul>
+
+    <li ng-repeat="task in tasks">
+        <input type="checkbox" ng-change="updateCount(task)" ng-model="task.done">
+        <span ng-class="{'hilite' : task.done}">
+            {{task.activity}}
+
+        </span>
+    </li>
+</ul>
+</div>
+
+    </div>
+New Task : <input type="text" ng-model="newtask">
+<button ng-click="addTask()">Add Task</button>
+<script>
+    var app = angular.module('myApp',[]);
+    app.filter('myfilter', function(){
+        return function(inputs) {
+            var output=[];
+            for(var i=0;i<inputs.length;i++){
+                if(inputs[i].done===false) output.push(inputs[i]);
+            }
+            return output;
+        };
+    });
+    app.controller('myCtrl', function($scope){
+        $scope.curview="list";
+
+        $scope.tasks = [{activity :'learn angularjs', done:false}];
+        $scope.count=$scope.tasks.length;
+
+        $scope.showArchive=function(){
+            $scope.curview="archive";
+        };
+
+        $scope.showList=function(){
+            $scope.curview="list";
+        }
+        $scope.addTask = function() {
+            $scope.tasks.push({activity: $scope.newtask, done:false});
+            $scope.newtask="";
+            $scope.count++;
+        }
+ //      $scope.hilite = function(index){
+
+  //      }
+$scope.updateCount=function(task){
+    if(tasks.done) $scope.count++;
+    else $scope.count--;
+};
+    });
+
+
+</script>
+</body>
+</html>
